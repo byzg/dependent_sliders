@@ -47,6 +47,12 @@ class Items extends Component<Props, State> {
     return _.difference(items, [item]);
   }
 
+  limitMaxForItem = (item: Item) => {
+    return this.props.items.length === 1 ?
+      100 :
+      (_.maxBy(this.itemsExcept(item), 'percent') as Item).percent + item.percent;
+  }
+
   handleItemChange = (index: number) => (percent: number) => {
     const { items } = this.state;
     const nextItems = produce(items, (draft) => {
@@ -77,14 +83,10 @@ class Items extends Component<Props, State> {
           })}
         </div>
         { items.map((item, index) => {
-          const max =
-            items.length === 1 ?
-              100 :
-              (_.maxBy(this.itemsExcept(item), 'percent') as Item).percent + item.percent;
           return <ItemComponent
             key={index}
             item={item}
-            max={max}
+            max={this.limitMaxForItem(item)}
             onChange={this.handleItemChange(index)}
           />;
         })}
