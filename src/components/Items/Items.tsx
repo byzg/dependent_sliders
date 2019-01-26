@@ -21,7 +21,11 @@ class Items extends Component<Props, State> {
   state = { items: this.props.items };
 
   componentDidMount() {
-    (this.props.receiveItems(3) as Promise<Action>).then(() => {
+    this.receive(2)();
+  }
+
+  receive = (count: number)=> ()=> {
+    (this.props.receiveItems(count) as Promise<Action>).then(() => {
       this.setState(this.autocorrected);
     });
   }
@@ -66,8 +70,16 @@ class Items extends Component<Props, State> {
     if (!items) { return null; }
     return (
       <div>
+        <div>
+          {_.range(1, 6).map((i: number) => {
+            return <button key={i} onClick={this.receive(i)}>{i} item</button>;
+          })}
+        </div>
         { items.map((item, index) => {
-          const max = (_.maxBy(this.itemsExcept(item), 'percent') as Item).percent + item.percent;
+          const max =
+            items.length === 1 ?
+              100 :
+              (_.maxBy(this.itemsExcept(item), 'percent') as Item).percent + item.percent;
           return <ItemComponent
             key={index}
             item={item}
@@ -75,6 +87,12 @@ class Items extends Component<Props, State> {
             onChange={this.handleItemChange(index)}
           />;
         })}
+        <div>
+          Результат:
+          {items.map((item, index) => {
+            return <div key={index}>{item.name}: {item.percent}%</div>;
+          })}
+        </div>
       </div>
     );
   }
