@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Demo
+# Demo videos
 
 [demo.flv](https://github.com/byzg/dependent_sliders/blob/master/demo.flv?raw=true)
 
