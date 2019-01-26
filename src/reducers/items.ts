@@ -11,7 +11,7 @@ export interface Item {
   percent: number;
 }
 
-export interface ItemsState {
+export interface ItemsState extends Array<Item> {
   [index: number]: Item;
 }
 

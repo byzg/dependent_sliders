@@ -9,7 +9,12 @@
     "ordered-imports": false,
     "member-access": [true, "no-public"],
     "object-literal-sort-keys": false,
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "whitespace": [
+      true,
+      "check-module"
+    ],
+    "import-spacing": true
   },
   "rulesDirectory": []
 }
