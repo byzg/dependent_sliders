@@ -60,6 +60,7 @@ class Items extends Component<Props, State> {
           ) || items[0],
         );
         draft[dependantIndex].percent -= difference;
+        draft[dependantIndex].percent = _.round(draft[dependantIndex].percent, 2);
       }
     });
     this.setState({ items: nextItems });

@@ -33,7 +33,7 @@ class ItemComponent extends Component<Props> {
   }
 
   handleChange = (value: number | Range)=> {
-    this.props.onChange(value as number);
+    this.props.onChange(_.round(value as number, 2));
   }
 
   render() {
@@ -42,7 +42,7 @@ class ItemComponent extends Component<Props> {
       <Wrapper>
         <Name>{item.name}</Name>
         <InputRange
-          maxValue={max}
+          maxValue={_.round(max, 2)}
           minValue={0}
           value={parseFloat(this.formatter(item.percent))}
           onChange={this.handleChange}
