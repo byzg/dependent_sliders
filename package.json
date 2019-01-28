@@ -2,6 +2,7 @@
   "name": "dependent_sliders",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://byzg.github.io/dependent_sliders",
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/humps": "^1.1.2",
@@ -16,6 +17,7 @@
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/styled-components": "^4.1.6",
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "humps": "^2.0.1",
     "immer": "^1.12.1",
     "lodash": "^4.17.11",
@@ -37,7 +39,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
